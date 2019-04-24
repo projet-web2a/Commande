@@ -23,17 +23,17 @@
 		alert("Entrer le numero du carte");
 		return false;
 	}
-	else if (payment.cardnumber.value.length<17 )
+	else if (payment.cardnumber.value.length==16 )
 	{
 		alert("Entrer le numero du carte correctement");
 		return false;
 	}
-	else if(payment.security-code.value=='')
+	else if(payment.security.value=='')
 	{
 		alert("Entrer le code de securité");
 		return false;
 	}
-	else if(payment.security-code.value<3 || isNaN(payment.security-code.value))
+	else if(payment.security.value<3 || isNaN(payment.security.value))
 	{
 		alert("Entrer le code de securité correctement");
 		return false;
@@ -400,32 +400,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<form  method="post" class="creditly-card-form agileinfo_form" name="payment">
 											<section class="creditly-wrapper wthree, w3_agileits_wrapper">
 												<div class="credit-card-wrapper">
-													<div class="first-row form-group">
-														<div class="controls">
-															<label class="control-label">Name on Card</label>
-															<input class="billing-address-name form-control" type="text" name="cardname" placeholder="">
-														</div>
-														<div class="w3_agileits_card_number_grids">
-															<div class="w3_agileits_card_number_grid_left">
-																<div class="controls">
-																	<label class="control-label">Card Number</label>
-																	<input class="number credit-card-number form-control" type="text" name="cardnumber" inputmode="numeric" autocomplete="cc-number"
-																	    autocompletetype="cc-number" x-autocompletetype="cc-number" placeholder="&#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149;">
-																</div>
-															</div>
-															<div class="w3_agileits_card_number_grid_right">
-																<div class="controls">
-																	<label class="control-label">CVV</label>
-																	<input class="security-code form-control" inputmode="numeric" type="text" name="security-code" placeholder="&#149;&#149;&#149;">
-																</div>
-															</div>
-															<div class="clear"> </div>
-														</div>
-														<div class="controls">
-															<label class="control-label">Expiration Date</label>
-															<input class="expiration-month-and-year form-control" type="text" name="cardDate" placeholder="MM / YY">
-														</div>
-													</div>
+
 						<button type="button" class="btn btn-dark" onclick="return verifPay()">Make a Payment</button>
 												</div>
 											</section>
@@ -539,34 +514,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<a class="btn btn-primary">Checkout via Paypal</a>
 										</div>
 										<div class="col-md-6">
-										<form action="#" method="post" class="cc-form">
-												<div class="clearfix">
-													<div class="form-group form-group-cc-number">
-														<label>Card Number</label>
-														<input class="form-control" placeholder="xxxx xxxx xxxx xxxx" type="text">
-														<span class="cc-card-icon"></span>
-													</div>
-													<div class="form-group form-group-cc-cvc">
-														<label>CVV</label>
-														<input class="form-control" placeholder="xxxx" type="text">
-													</div>
-												</div>
-												<div class="clearfix">
-													<div class="form-group form-group-cc-name">
-														<label>Card Holder Name</label>
-														<input class="form-control" type="text">
-													</div>
-													<div class="form-group form-group-cc-date">
-														<label>Valid Thru</label>
-														<input class="form-control" placeholder="mm/yy" type="text">
-													</div>
-												</div>
-												<div class="checkbox checkbox-small mt-4">
-													<label>
-														<input class="i-check" type="checkbox" checked="">Add to My Cards</label>
-												</div>
-												<input class="btn btn-primary submit mt-4" type="submit" value="Proceed Payment">
-											</form>
+					    <form class="paypal" action="payments.php" method="post" id="paypal_form">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="lc" value="UK" />
+        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+        <input type="hidden" name="first_name" value="Customer's First Name" />
+        <input type="hidden" name="last_name" value="Customer's Last Name" />
+        <input type="hidden" name="payer_email" value="customer@example.com" />
+        <input type="hidden" name="item_number" value="123456" / >
+        <input type="submit" name="submit" value="Submit Payment"/>
+    </form>
 										</div>
 										<div class="clearfix"></div>
 									</div>

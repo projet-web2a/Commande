@@ -382,8 +382,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</table>
 				</div>
 				<div class="checkout-left row">
-					<div class="col-md-4 checkout-left-basket">
-					  <h4> <a href="index.php">Continue shopping</a></h4>
+					<div class="col-md-4">
+					  <h4> <a  class="btn btn-dark"  href="index.php">Continue shopping</a></h4>
 					  <!-- <ul>
 							<li>Product1
 								<i>-</i>
@@ -409,9 +409,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<form action="indexCommande.php" method="POST"> 
 						<div>
 			<?php if($nbArticles <= 0)
-			echo "<input type='submit' value='Valider la commande' name='ajouterCommande' hidden >";
+			echo "<input type='submit' value='Passer la commande' name='ajouterCommande' hidden >";
                else 
-               	echo "<input type='submit' value='Valider la commande' name='ajouterCommande' >";
+               	echo "<input type='submit' class='btn btn-dark' value='Passer la commande' name='ajouterCommande' >";
                ?>
               
            
@@ -420,7 +420,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							 </form>
 							 <form action="print.php">
-							 <input type="submit" name="print" value="print">
+							 <br>
+							 <input class="btn btn-dark" type="submit" name="print" value="Imprimer un devis">
+
 							 </form>
 							</li>
 					  </ul>

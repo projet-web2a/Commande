@@ -2,16 +2,18 @@
  
 require 'C:/xampp/htdocs/eyezone/entites/commande.php';
 require 'C:/xampp/htdocs/eyezone/core/commandeC.php';
+
+
 $cc=new commandeC();
 $listeComande=$cc->afficherCommande();
 $res=false;
-
+$num=0;
 $maction='afficher';
 $par="";
 $res1=false;
- if (isset($_POST['search']))
+ if (isset($_GET['search']))
   {
-    $idCommande=$_POST['search'];
+    $idCommande=$_GET['search'];
     $listeProduit=$cc->afficher_ProduitsCommande($idCommande);
     $res=true;
    }
@@ -30,8 +32,11 @@ $res1=false;
               $par=$_GET['par'];
               $listeComande=$cc->trier($par);
             }
-       
-       
+          else if 
+            ($maction=='stat')
+            {
+              $num=$_GET['num'];       
+            }
 
 
 ?>
@@ -99,7 +104,7 @@ $res1=false;
 </div>
     
     </ul>
-    <form name="f" class="form-inline my-2 my-lg-0" method="post">
+    <form name="f" class="form-inline my-2 my-lg-0" method="get">
   <div class="input-group">
   <input type="text" class="form-control" name="chercher"  aria-label="Text input with dropdown button" onchange="myFunction()" >
    <div class="input-group-append">
@@ -200,7 +205,8 @@ alert(NameValue);
                   </div>
                 </div>
                      <div  class="container-fluid"> 
-                  <div class="card text-center">
+
+                  <div class="card text-center ">
                     <div class="card-close">
                 
                     </div>
@@ -208,17 +214,37 @@ alert(NameValue);
                       <h3 class="h1"> Statistique Commandes  </h3>
                     </div>
                     <div class="card-body">
+                        <div class="dropdown">
+                          
+  <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+STAT  </a>
+
+  <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item " href="commande.php?maction=stat&num=1">nombre des Commande par année</a>
+    <a class="dropdown-item " href="commande.php?maction=stat&num=2">Revenu de l'année par mois </a>
+    <a class="dropdown-item " href="commande.php?maction=stat&num=3">Les produit les plus commandées</a>
+  </div>
+</div>
                       <div class="table-responsive">
-                      <?php  
-                        require 'statistiqueCommandes.php';
+                      <?php 
+                      if ($num==1)
+                          require_once'statistiqueCommandes.php';
+                          else if ($num==2)
+                        require_once'stat.php';
+                      else
+                        require_once'statistique.php';
+
                            ?>
                       </div>
                     </div>
                   </div>
                 </div>
+               
+
               </div>
             </div>
           </section>
+
           <!-- Page Footer-->
           <footer class="main-footer">
             <div class="container-fluid">

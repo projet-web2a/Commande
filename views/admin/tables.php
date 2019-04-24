@@ -126,7 +126,7 @@
           <ul class="list-unstyled">
             <li><a href="index.php"> <i class="icon-home"></i>Home </a></li>
             <li class="active"><a href="tables.php"> <i class="icon-grid"></i>Produits </a></li>
-            <li><a href="charts.php"> <i class="fa fa-bar-chart"></i>Commandes </a></li>
+            <li><a href="commande.php"> <i class="fa fa-bar-chart"></i>Commandes </a></li>
             <li><a href="forms.php"> <i class="icon-padnote"></i>Clients </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Marketing </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">

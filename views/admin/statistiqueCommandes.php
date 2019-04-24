@@ -30,7 +30,7 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
   animationEnabled: true,
   exportEnabled: true,
-  theme: "light1", // "light1", "light2", "dark1", "dark2"
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
   title:{
     text: "Statistique des Commandes "
   },
