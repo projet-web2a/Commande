@@ -1,3 +1,16 @@
+<?php  session_start(); ?>
+<?php 
+
+ if (empty($_SESSION['email']))
+ {
+	 echo "<script type='text/javascript'>";
+echo "alert('Please Login First');";
+echo "</script>";
+	 
+ }
+
+?>
+
 <?php
 require 'C:/xampp/htdocs/eyezone/core/classpanier.php';
 $panier=creationPanier();
@@ -1381,6 +1394,7 @@ $panier=creationPanier();
 								<label class="mb-2">Email address</label>
 								<input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="" required="">
 							</div>
+							
 							<button type="submit" class="btn btn-primary submit mb-4">Get 50% Off</button>
 						</form>
 						<p class="text-center">

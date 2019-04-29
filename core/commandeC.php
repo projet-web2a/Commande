@@ -10,8 +10,17 @@ require 'C:/xampp/htdocs/eyezone/config.php';
         $result= $db->query($sql);
         return $result;
       }
-   
-  
+   function getMailCommande($idCommande)
+    {
+      $db = config::getConnexion();
+      $sql = '   SELECT email ,idcommande from commande join client on client.username=commande.username where idCommande=:idCommande';
+      $req = $db->prepare($sql);
+      $req->bindValue(':idCommande',$idCommande);
+      $req->execute();
+      $result = $req->fetch(PDO::FETCH_OBJ);
+      return $result;
+    }
+    
       public function ajouterCommande($commande)
       {
         $sql="INSERT INTO `commande` (`dateCommande`,`etat`,`username`,`prixTotal`) VALUES (:DATECOMMANDE,:ETAT,:username,:PRIXTOTAL);";
@@ -94,6 +103,18 @@ catch (Exception $e)
         $listproduit= $req->fetchALL(PDO::FETCH_OBJ);
         return $listproduit;
       }
+      public function afficher_facture($idCommande)
+      {
+        $db = config::getConnexion();
+      $sql =" SELECT  P.refe , P.mar , P.prix , L.quantiteCommandee, C.PrixTotal , C.dateCommande, C.idCommande from produit P join lignecommande L  ON P.refe=L.refe  join commande C on C.idCommande=L.idCommande WHERE L.idCommande=:idCommande ";
+ 
+        $req=$db->prepare($sql);//cette fonction permet seulement la lecture ,permet de retourner un tableau de données
+        $req->bindValue(':idCommande',$idCommande);
+        $req->execute();
+        $listproduit= $req->fetchALL(PDO::FETCH_OBJ);
+        return $listproduit;
+      }
+     
          public function SupprimerCommande($idCommande)
       {
           $sql="DELETE from commande  where idCommande=$idCommande ";

@@ -1,3 +1,18 @@
+
+
+<?php  session_start(); ?>
+<?php 
+
+
+ if (empty($_SESSION['email']))
+ {
+   echo "<script type='text/javascript'>";
+echo "alert('Please Login First');";
+echo "</script>";
+   
+ }
+
+?>
 <?php 
 
     include '../../entites/commande.php';
@@ -5,19 +20,20 @@
     include '../../entites/ligneCommande.php';
     include '../../core/ligneCommandeC.php';
     include_once("../../core/classpanier.php");
-     require_once '../../core/lib/phpmailer/PHPMailerAutoLoad.php';
-    $panier=creationPanier();
+     require_once '../../core/lib/phpmailer/PHPMailerAutoload.php';
+
+ 
 
     if(isset($_POST['ajouterCommande']))
     {   //$idUtilisateur=$_SESSION['idUtilisateur'];
-        $idUtilisateur=mt_rand(20,40);
+        $idUtilisateur=$_SESSION['username'];
         $dateCommande= date("Y-m-d");
         $prixTotal=MontantGlobal();
         $etat='en cours';
         $nbArticles=count($_SESSION['panier']['refeProduit']);
         $test=true;
         //controle stock
-  /*       for ($i=0; $i < $nbArticles ; $i++) 
+      /*   for ($i=0; $i < $nbArticles ; $i++) 
       { 
          $pc=new produitC();
          $liste=$pc->rechercherProduit($_SESSION['panier']['idProduit'][$i],$db);
@@ -49,7 +65,7 @@
                 {
                     /*var_dump($value);
                     die();*/
-                     $idCommande=$value['idCommande'];
+                    $idCommande=$value['idCommande'];
                 }
         
               $ldcc=new LigneCommandeC();
@@ -65,9 +81,11 @@
         
                       
             supprimePanier();
-             header('Location: panier.php?ajoutC=n');
+
+            header('Location: panier.php');
         }
-    }
+      }
+    
 ?>
 
    

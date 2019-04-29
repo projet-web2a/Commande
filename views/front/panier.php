@@ -1,3 +1,18 @@
+<?php  session_start(); ?>
+<?php 
+
+
+
+ if (empty($_SESSION['email']))
+ {
+	 echo "<script type='text/javascript'>";
+echo "alert('Please Login First');";
+echo "</script>";
+	 
+ }
+
+?>
+
 <?php
 require 'C:/xampp/htdocs/eyezone/core/classpanier.php';
 $panier=creationPanier();

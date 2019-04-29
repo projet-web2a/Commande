@@ -101,7 +101,7 @@ $listeComande=$cc->afficherCommande();
                     </div>
 
                     <div class="card-body">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar  navbar-expand-lg navbar-light bg-light" class="table-responsive">
  
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

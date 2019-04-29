@@ -5,6 +5,20 @@
 	License: Creative Commons Attribution 3.0 Unported
 	License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php  session_start(); ?>
+<?php 
+
+
+
+ if (empty($_SESSION['email']))
+ {
+	 echo "<script type='text/javascript'>";
+echo "alert('Please Login First');";
+echo "</script>";
+	 
+ }
+
+?>
 
 <!DOCTYPE html>
 <html lang="zxx">
