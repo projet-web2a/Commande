@@ -17,6 +17,11 @@ echo "alert('Please Login First');";
 echo "</script>";
 	 
  }
+ require 'C:/xampp/htdocs/eyezone/core/classpanier.php';
+
+$panier=creationPanier();
+$nbArticles=compterArticles();
+
 
 ?>
 
@@ -81,6 +86,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<button class="top_googles_cart" type="submit" name="submit" value="">
 									My Cart
 									<i class="fas fa-cart-arrow-down"></i>
+									<span class="badge badge-secondary nav-link-badge">
+							<?=$nbArticles?>
 								</button>
 							</form>
 						</li>

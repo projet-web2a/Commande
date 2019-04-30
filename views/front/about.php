@@ -4,6 +4,13 @@
 	License: Creative Commons Attribution 3.0 Unported
 	License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+require 'C:/xampp/htdocs/eyezone/core/classpanier.php';
+
+$panier=creationPanier();
+$nbArticles=compterArticles();
+
+?>
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,6 +72,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<button class="top_googles_cart" type="submit" name="submit" value="">
 									My Cart
 									<i class="fas fa-cart-arrow-down"></i>
+									<span class="badge badge-secondary nav-link-badge">
+							<?=$nbArticles?>
 								</button>
 							</form>
 						</li>

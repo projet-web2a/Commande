@@ -2,6 +2,7 @@
 require 'C:/xampp/htdocs/eyezone/core/commandeC.php';
      require_once '../../core/lib/phpmailer/PHPMailerAutoload.php';
 require_once 'print.php';
+
 $id=$_GET['id'];
 $commandeC =new commandeC();
 $listeproduits=$commandeC->afficher_facture($id);

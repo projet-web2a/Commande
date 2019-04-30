@@ -1,7 +1,8 @@
 <?php  session_start(); ?>
 <?php 
 
-
+$paypal_link = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
+$paypal_username = 'eyezone@gmail.com'; //Business Email
 
  if (empty($_SESSION['email']))
  {
@@ -91,7 +92,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="hidden" name="display" value="1">
 								<button class="top_googles_cart" type="submit" name="submit" value="">
 									My Cart
-									<i class="fas fa-cart-arrow-down"></i>
+									<i class="fas fa-cart-arrow-down"> </i>
+									<span class="badge badge-secondary nav-link-badge">
+							<?=$nbArticles?>
 								</button>
 							</form>
 						</li>
@@ -485,9 +488,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</section>
 						</form>
-						<div class="checkout-right-basket">
+					<!--	<div class="checkout-right-basket">
 							<a href="payment.php">Make a Payment </a>
 						</div>
+					-->
+		 <form action="<?php echo $paypal_link; ?>" method="post">
+
+        <!-- Identify your business so that you can collect the payments. -->
+        <input type="hidden" name="business" value="<?php echo $paypal_username; ?>">
+        
+        <!-- Specify a Buy Now button. -->
+        <input type="hidden" name="cmd" value="_xclick">
+        
+         Specify details about the item that buyers will purchase.
+
+        <input type="hidden" name="item_name" value="<?="lunette" ?>">
+        <input type="hidden" name="item_number" value="<?=12?>">
+    
+        <input type="hidden" name="amount" value="<?=MontantGlobal()/3.03?>">
+        <input type="hidden" name="currency_code" value="USD">
+        <!-- Specify URLs -->
+        <input type='hidden' name='cancel_return' value='http://localhost:1234/eyezone/views/front/paypal_cancel.php'>
+		<input type='hidden' name='return' value='http://localhost:1234/eyezone/views/front/indexCommande.php'>
+
+        
+        <!-- Display the payment button. >
+        <input type="image" name="submit" border="0" class="checkout-right-basket"  alt="PayPal - The safer, easier way to pay online">
+        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >-->
+        <div class="checkout-right-basket">
+			<input type="submit" value="Make a Payment " class="btn btn-dark">
+		</div>
+    
+    </form>
 					</div>
 
 					<div class="clearfix"> </div>
@@ -615,7 +647,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/classie-search.js"></script>
 	<script src="js/demo1-search.js"></script>
 	<!--//search jQuery-->
-	<!-- cart-js -->
+	<!-- cart-js 
 	<script src="js/minicart.js"></script>
 	<script>
 		googles.render();

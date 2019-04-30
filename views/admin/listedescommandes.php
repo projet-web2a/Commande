@@ -52,16 +52,56 @@ $listeComande=$cc->afficherCommande();
                 }
 
           }
-        
+                        else if ($maction='notif')
+                {
+
+                  $listeComande=$cc->afficher_notif();
+                }
+  
    
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<?php require 'head.php'; ?>
 
+      <!--      <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link  nav-link-lg "><span class="badge badge-secondary nav-link-badge">
+                              <?php
+$db=config::getConnexion();
+  
+   $req3= $db->query("SELECT count(*) as nb,idCommande FROM commande where dateCommande='2019-04-29'  ");
+    $nb = $req3->fetch();
+               echo $nb['nb'];
+               $x=$nb['nb'];
+                ?>
+            </span><i class="fa fa-bell-o"></i></a>
+              <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                <div class="dropdown-header">Notifications :
+                  <div class="float-right">
+                    <a href="Rec.php" class="text-white">View All</a>
+                  </div>
+                </div>
+
+                <?PHP
+$listeN=$cc->chercherCommande('dateCommande','2019-04-29');
+foreach($listeN as $row){
+
+                ?>
+                <div class="dropdown-header">
+                <a class="text-dark" href="traiter.php?idreclamation=<?PHP echo $row->idCommande; ?>">
+                <strong>vous avez une nouvelle commande</strong>
+                </a>
+                </div>
+                <?PHP
+                }
+                ?>
+              </li>-->
+
 </head>
+
 <body>
 	  <div class="page">
       <!-- Main Navbar-->

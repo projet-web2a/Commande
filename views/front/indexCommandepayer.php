@@ -18,7 +18,8 @@ echo "</script>";
 
  
 
-  
+    if(isset($_POST['ajouterCommande']))
+    {   
         $idUtilisateur=$_SESSION['username'];
         $dateCommande= date("Y-m-d");
         $prixTotal=MontantGlobal();
@@ -71,11 +72,11 @@ echo "</script>";
               }
         
                       
-            supprimePanier();
+            //supprimePanier();
 
-            header('Location: panier.php');
+           // header('Location: panier.php');
         }
-      
+      }
     
 ?>
 

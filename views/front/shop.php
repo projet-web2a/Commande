@@ -17,6 +17,12 @@ echo "</script>";
 	 
  }
 
+require 'C:/xampp/htdocs/eyezone/core/classpanier.php';
+
+$panier=creationPanier();
+$nbArticles=compterArticles();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -80,7 +86,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="hidden" name="display" value="1">
 								<button class="top_googles_cart" type="submit" name="submit" value="">
 									My Cart
-									<i class="fas fa-cart-arrow-down"></i>
+									<i class="fas fa-cart-arrow-down">
+										<span class="badge badge-secondary nav-link-badge">
+							<?=$nbArticles?>
+									</i>
 								</button>
 							</form>
 						</li>

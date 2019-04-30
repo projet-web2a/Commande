@@ -92,6 +92,33 @@ catch (Exception $e)
         $listcommandes= $result->fetchALL(PDO::FETCH_OBJ);
         return $listcommandes;
       }
+
+      public function notif()
+      {
+        $db = config::getConnexion();
+        $date=date("Y-m-d");
+      $sql ="SELECT count(*) as nb , idCommande FROM commande where dateCommande='$date' and etat='en cours' ";
+
+        $result =$db->query($sql);//cette fonction permet seulement la lecture ,permet de retourner un tableau de données
+        $result->bindValue(':date',$date);
+        $result->execute();
+        $listcommandes= $result->fetchALL(PDO::FETCH_OBJ);
+        return $listcommandes;
+      }
+       public function afficher_notif()
+      {
+        $db = config::getConnexion();
+        $date=date("Y-m-d");
+      $sql ="SELECT * FROM commande where dateCommande='$date' and etat='en cours' ";
+
+        $result =$db->query($sql);//cette fonction permet seulement la lecture ,permet de retourner un tableau de données
+        $result->bindValue(':date',$date);
+        $result->execute();
+        $listcommandes= $result->fetchALL(PDO::FETCH_OBJ);
+        return $listcommandes;
+      }
+      
+
       public function afficher_ProduitsCommande($idCommande)
       {
         $db = config::getConnexion();

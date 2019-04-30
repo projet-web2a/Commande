@@ -1,3 +1,9 @@
+<?php
+$panier=creationPanier();
+$nbArticles=compterArticles();
+
+
+?>
 <div class="row">
 				<div class="col-md-3 top-info text-left mt-lg-4">
 					<h6>Need Help</h6>
@@ -24,7 +30,10 @@
 							<form action="panier.php" method="post" class="last">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
-								<button class="top_googles_cart" type="submit" name="submit" value=""> My Cart <em class="fas fa-cart-arrow-down"></em></button>
+
+								<button class="top_googles_cart" type="submit" name="submit" value=""> My Cart <em class="fas fa-cart-arrow-down"> <span class="badge badge-secondary nav-link-badge">
+							<?=$nbArticles?></em>
+								</button>
 							</form>
 						</li>
 					</ul>

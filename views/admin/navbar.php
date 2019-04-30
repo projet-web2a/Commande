@@ -1,4 +1,11 @@
-  <header class="header">
+<?php
+$list=$cc->notif();
+foreach ($list as $value) {
+  # code...
+  $nb=$value->nb;
+}
+?>
+<header class="header">
           <!-- Search Box-->
 <nav class="navbar">
           <div class="search-box">
@@ -21,31 +28,46 @@
                 <!-- Search-->
                 <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
                 <!-- Notifications-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">1</span></a>
+                <li class="nav-item dropdown "> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner"> <?=$nb?> </span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="listedescommandes.php?maction=<?='notif'?>" class="dropdown-item"> 
                         <div class="notification">
-                          <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
+                          <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have <?=$nb?> new Commabdes </div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-upload bg-orange"></i>Server Rebooted</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>10 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
+                   <!-- <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>-->
                   </ul>
                 </li>
+   <!--arefarer           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link  nav-link-lg "><span class="badge bg-red badge-corner">
+                              <?php
+$db=config::getConnexion();
+  
+   $req3= $db->query("SELECT count(*) as nb,idCommande FROM commande where dateCommande='2019-04-29'  ");
+    $nb = $req3->fetch();
+               echo $nb['nb'];
+               $x=$nb['nb'];
+                ?>
+            </span><i class="fa fa-bell-o"></i></a>
+              <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                <div class="dropdown-header">Notifications :
+                  <div class="float-right">
+                    <a href="Rec.php" class="text-white">View All</a>
+                  </div>
+                </div>
+
+                <?PHP
+$listeN=$cc->chercherCommande('dateCommande','2019-04-29');
+foreach($listeN as $row){
+
+                ?>
+                <div class="dropdown-header">
+                <a class="text-dark" href="traiter.php?idreclamation=<?PHP echo $row->idCommande; ?>">
+                <strong>vous avez une nouvelle commande</strong>
+                </a>
+                </div>
+                <?PHP
+                }
+                ?>
+              </li>-->
                 <!-- Messages                        -->
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
